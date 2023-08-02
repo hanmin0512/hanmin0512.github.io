@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "ko-KR"
 title                    : "hanmin"
 title_separator          : "|"
-subtitle                 : "small positive action" # site tagline that appears below site title in masthead
+subtitle                 : "HanMin의 블로그" # site tagline that appears below site title in masthead
 name                     : "HanMin"
 description              : "HanMin의 블로그 입니다."
 url                      : "https://hanmin0512.github.io"
