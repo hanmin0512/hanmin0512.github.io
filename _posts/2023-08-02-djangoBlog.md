@@ -5,7 +5,7 @@ categories: WebProject
 toc: true
 ---
 
-### 이 웹 프로젝트는 군인 시절에 django 책을 보고 만든 웹 사이트이다.
+## 이 웹 프로젝트는 군인 시절에 django 책을 보고 만든 웹 사이트이다.
 ---
 ## 개발 환경
 - python
