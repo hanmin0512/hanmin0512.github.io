@@ -15,12 +15,12 @@
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
+locale                   : "ko-KR"
 title                    : "hanmin"
-title_separator          : "포트폴리오"
-subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
+title_separator          : "|"
+subtitle                 : "small positive action" # site tagline that appears below site title in masthead
+name                     : "HanMin"
+description              : "HanMin의 블로그 입니다."
 url                      : "https://hanmin0512.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
