@@ -202,7 +202,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: Asia/Seoul# https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins (previously gems:)
@@ -235,9 +235,9 @@ whitelist:
 category_archive:
   type: liquid
   path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
+#tag_archive:
+#  type: liquid
+#  path: /tags/
 # https://github.com/jekyll/jekyll-archives
  jekyll-archives:
    enabled:
@@ -245,10 +245,10 @@ tag_archive:
      - tags
    layouts:
      category: archive-taxonomy
-     tag: archive-taxonomy
+    # tag: archive-taxonomy
    permalinks:
      category: /categories/:name/
-     tag: /tags/:name/
+    # tag: /tags/:name/
 
 
 # HTML Compression
