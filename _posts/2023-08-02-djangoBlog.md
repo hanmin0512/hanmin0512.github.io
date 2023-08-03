@@ -92,3 +92,5 @@ sidebar:
 ![22](https://github.com/hanmin0512/soldier_django_blog/assets/37041208/4b9eacdb-9308-441a-a184-3b8b8d5ba750)
 
 
+## 코드 보러가기 (github)
+- <a href= "https://github.com/hanmin0512/soldier_django_blog"> django web 앱 코드(github)</a>

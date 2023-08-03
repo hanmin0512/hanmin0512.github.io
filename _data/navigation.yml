@@ -6,7 +6,7 @@ main:
     url: /search/
   
 docs:
-  - title: "Menu"
+  - title: "메뉴"
     children:
       - title: "Category"
         url: /categories/
