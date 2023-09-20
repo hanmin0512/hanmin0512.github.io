@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Dreamhack [Command-Injection-1] 문제풀이"
-categories: pwnable
+categories: Security
 toc: true
 author_profile: false
 sidebar:
