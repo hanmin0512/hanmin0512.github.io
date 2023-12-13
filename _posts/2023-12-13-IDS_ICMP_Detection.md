@@ -49,4 +49,4 @@ alert icmp any any -> any any (msg:"Ping Of Death"; sid:3000007; threshold:type 
 > 마지막 ip.dst가 16.79.101.175 패킷은 공격할 때 와이어 샤크에 스니핑 된것을 보아 올바르게 패킷이 탐지 된것을 알 수 있다.
 
 ## github 보러가기
-- <a href= "https://github.com/hanmin0512/IDS_ICMP_Detection"> CVE-2014-6271 (github)</a>
+- <a href= "https://github.com/hanmin0512/IDS_ICMP_Detection"> IDS 관제룰 (github)</a>
