@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "ICMP[Fragment] flood공격, IDS탐지 룰 정의 및 탐지 검증 실습 "
+title: "보안뉴스 자동화 정리 프로그램 "
 categories: Application
 toc: true
 author_profile: false
