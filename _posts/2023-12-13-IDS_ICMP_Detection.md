@@ -18,6 +18,9 @@ sidebar:
 
 ## ICMP Flood(Fragment)공격 시그니처 분석하기
 
+```
+hping3 icmp --rand-source [Dst IP] -d [packet length] --flood
+```
 
 - 공격하기
 > ![hping](https://github.com/hanmin0512/IDS_ICMP_Detection/assets/37041208/1bd0ebd9-acd8-4736-99f6-7500c011b638)
@@ -31,6 +34,9 @@ sidebar:
 - security onion - suguil 룰 설정
 > ![lcal_ruies](https://github.com/hanmin0512/IDS_ICMP_Detection/assets/37041208/8cf5cb46-f07f-4dbe-9e9e-b826a91a90a7)
 
+```
+alert icmp any any -> any any (msg:"Ping Of Death"; sid:3000007; threshold:type both, track by_src, count 50, seconds 2; content:"|585858|"; offset:15; rev:4;)
+```
 
 >![rule](https://github.com/hanmin0512/IDS_ICMP_Detection/assets/37041208/05bd6f63-801d-496c-81a8-fb9e5c546f3c)
 
