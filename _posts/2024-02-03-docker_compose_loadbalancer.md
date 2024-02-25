@@ -18,12 +18,14 @@ docker-compose를 사용하여 Load Balance를 직접 구현해보자
 
 ## 환경 설정
 - install tools
+
 ```
 sudo apt update
 sudo apt install docker.io
 sudo apt install docker-compose
 ```
 - directory 생성
+
 ```
 mkdir WEB_LB
 cd WEB_LB
@@ -32,18 +34,24 @@ mkdir web01
 mkdir web02
 mkdir web03
 ```
+
 ## nginx_lb 디렉토리 작업
+
 ```
 cd nginx_lb
 sudo vim Dockerfile
 ```
+
 - nginx_lb 디렉토리의 Dockerfile
+
 ```
 FROM nginx:1.18
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 ```
+
 - nginx_lb 디렉토리의 nginx.conf 파일 작성
+
 ```
 upstream backend-lb {
                 server 172.17.0.1:8001;
@@ -59,6 +67,7 @@ server {
 ```
 
 ## web01 디렉토리 작업
+
 ```
 cd ..
 cd web01
@@ -91,16 +100,21 @@ cp Dockerfile ../web02
 sudo vim ../web02/index.html
 ```
 - web02 디렉토리의 index.html
+
 ```
 <h1> Load Balance Test Page 02 </h1>
 ```
+
 ```
 sudo vim ../web03/index.html
 ```
+
 - web02 디렉토리의 index.html
+
 ```
 <h1> Load Balance Test Page 03 </h1>
 ```
+
 ## WEB_LB 디렉토리 작업
 
 ```
