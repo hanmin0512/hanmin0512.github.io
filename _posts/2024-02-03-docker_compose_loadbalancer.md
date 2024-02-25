@@ -50,7 +50,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 ```
 
-- nginx_lb 디렉토리의 nginx.conf 파일 작성
+- nginx_lb 디렉토리의 "nginx.conf" 파일 작성
 
 ```
 upstream backend-lb {
