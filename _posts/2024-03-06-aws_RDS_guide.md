@@ -59,4 +59,4 @@ select * from hanmin;
 
 
 
- - <a href= "https://github.com/hanmin0512/aws_RDS_Guide"> AWS S3 가이드 github 보러가기</a>
+ - <a href= "https://github.com/hanmin0512/aws_RDS_Guide"> AWS RDS 구성 실습 github 보러가기</a>
