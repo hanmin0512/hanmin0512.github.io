@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "docker "
+title: "docker 환경으로 구성된 WordPress 블로그 Hacking 실습"
 categories: Security
 toc: true
 author_profile: false
