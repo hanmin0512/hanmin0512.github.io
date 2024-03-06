@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "취약한 웹 서비스 KISA 중요정보통신 기반 취약점 점검 실습"
+title: "취약한 쇼핑몰 웹 서비스 KISA 중요정보통신 기반 취약점 점검 실습"
 categories: Security
 toc: true
 author_profile: false
