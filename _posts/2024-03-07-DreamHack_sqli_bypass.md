@@ -85,4 +85,4 @@ def index():
 > ![image](https://github.com/hanmin0512/dreamhack_by_pass_sqli/assets/37041208/285d849b-11e1-46b6-af6c-83abea29c17b)
 
 
-- <a href= "https://github.com/hanmin0512/dreamhack_by_pass_sqli"> DreamHack sqli bypass  github 보러가기</a>
+- <a href= "https://github.com/hanmin0512/dreamhack_by_pass_sqli"> [sql injection bypass WAF 문제풀이  github 보러가기</a>
